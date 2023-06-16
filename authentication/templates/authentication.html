@@ -1,0 +1,27 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Orion Conquest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Orion Conquest</h1>
+  </header>
+  <main>
+    {% if user.is_authenticated %}
+      <p>Welcome, {{ user.username }}!</p>
+    {% else %}
+      <a href="{% provider_login_url 'google' %}">Login with Google</a>
+    {% endif %}
+  </main>
+  <footer>
+    <p>Copyright &copy; 2023 Orion Conquest</p>
+  </footer>
+
+</body>
+
+</html>
