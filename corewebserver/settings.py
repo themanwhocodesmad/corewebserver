@@ -44,9 +44,6 @@ INSTALLED_APPS = [
     # My apps
     'authentication',
 
-
-
-
 ]
 
 SITE_ID = 2
@@ -127,13 +124,18 @@ SIMPLE_JWT = {
 
 WSGI_APPLICATION = 'corewebserver.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://corewebserver-production.up.railway.app'
+]
+
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # social app custom settings
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/generate-token/'
-LOGIN_URL = 'http://127.0.0.1:8000/google/login/?process=login'
+LOGIN_REDIRECT_URL = 'http://corewebserver-production.up.railway.app/generate-token/'
+LOGIN_URL = 'http://corewebserver-production.up.railway.app/google/login/?process=login'
 
 # Additional configuration settings
 SOCIALACCOUNT_QUERY_EMAIL = True
