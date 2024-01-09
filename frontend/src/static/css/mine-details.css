@@ -1,0 +1,15 @@
+.upgrade-costs {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.upgrade-costs li {
+    margin-right: 10px;
+}
+
+.cost-metal { color: #FF5733; }
+.cost-crystal { color: #33CFFF; }
+.cost-gas { color: darkcyan }
+.cost-energy { color: yellow }
+
