@@ -1,6 +1,6 @@
-const { Mine } = require('../models/mines-model') // Adjust the path as per your project structure
+const { Mine } = require('../models/mines-model')
 const mongoose = require('mongoose')
-const { MineTypes, UpgradeCosts } = require('../constants/mines-enum')
+const { MineTypes, MinesUpgradeCosts, MINES_BASE_UPGRADE_DURATION } = require('../constants/mines-enum')
 
 
 // Controller function to CREATE all types of mines (POST)
@@ -13,9 +13,9 @@ const createAllMines = async (req, res) => {
                 name: `${type} mine`,
 
                 //! ALWAYS INITIATE THESE VALUES
-                upgradeDurationBase: 20,
-                upgradeDuration: 20,
-                upgradeCosts: UpgradeCosts[type]
+                upgradeDurationBase: MINES_BASE_UPGRADE_DURATION,
+                upgradeDuration: MINES_BASE_UPGRADE_DURATION,
+                upgradeCosts: MinesUpgradeCosts[type]
             })
 
             return newMine.save()
@@ -31,7 +31,7 @@ const createAllMines = async (req, res) => {
 }
 
 
-// Controller function to upgrade a mine
+// Controller function to upgrade a mine (PUT)
 const upgradeMine = async (req, res) => {
     try {
         const { id } = req.params
@@ -58,10 +58,10 @@ const upgradeMine = async (req, res) => {
 
         // Update upgradeCosts
         // Assuming mine.upgradeCosts is an object
-        mine.upgradeCosts.metal += mine.level * 120;
-        mine.upgradeCosts.crystal += mine.level * 100;
-        mine.upgradeCosts.gas += mine.level * 80;
-        mine.upgradeCosts.energy += mine.level * 50;
+        mine.upgradeCosts.metal += mine.level * 120
+        mine.upgradeCosts.crystal += mine.level * 100
+        mine.upgradeCosts.gas += mine.level * 80
+        mine.upgradeCosts.energy += mine.level * 50
 
 
         await mine.save()

@@ -1,13 +1,11 @@
-// Constants IN UPPER CASE because habit
-const MINES_BASE_UPGRADE_DURATION = 20 // seconds
+const  { MineTypes } = require("./mines-enum")
 
-const MineTypes = {
-    OXYGEN: 'Oxygen',
-    GAS: 'Gas',
-    CRYSTAL: 'Crystal'
-};
+// Constants
+const STORE_CAPACITY_MULTIPLIER = 10000
+const STORE_BASE_UPGRADE_DURATION = 40 // seconds
 
-const MinesUpgradeCosts = {
+// Based on Mine Types
+const StoresUpgradeCosts = {
     [MineTypes.OXYGEN]: {
         metal: 100,
         crystal: 150,
@@ -29,7 +27,8 @@ const MinesUpgradeCosts = {
 };
 
 module.exports = {
-    MINES_BASE_UPGRADE_DURATION,
-    MineTypes,
-    MinesUpgradeCosts
-};
+    STORE_CAPACITY_MULTIPLIER,
+    STORE_BASE_UPGRADE_DURATION,
+    StoresUpgradeCosts,
+    
+}

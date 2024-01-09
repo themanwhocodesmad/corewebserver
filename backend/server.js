@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mineRoutes = require('./routes/mines-routes')
+const storeRoutes = require('./routes/stores-routes')
 
 const { default: mongoose } = require('mongoose')
 
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/api/mines', mineRoutes)
+app.use('/api/stores', storeRoutes)
 
 
 // connect to MongoDB
