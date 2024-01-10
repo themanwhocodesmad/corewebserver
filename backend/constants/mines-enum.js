@@ -1,4 +1,4 @@
-// Constants IN UPPER CASE because habit
+// Constants IN UPPER CASE because
 const MINES_BASE_UPGRADE_DURATION = 20 // seconds
 
 const MineTypes = {

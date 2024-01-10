@@ -1,7 +1,17 @@
 require('dotenv').config()
 const express = require('express')
+
+// Planet related route imports
 const mineRoutes = require('./routes/mines-routes')
 const storeRoutes = require('./routes/stores-routes')
+const planetRoutes = require('./routes/planets-routes')
+
+// Gameplay related route imports
+const mapRoutes = require('./routes/map-routes')
+
+// Schedular imports
+require('./utils/scheduler-fuctions/map-schedulars'); // Initialization to be able to use scheduler/periodic functions
+
 
 const { default: mongoose } = require('mongoose')
 
@@ -18,9 +28,10 @@ app.use((req, res, next) => {
 })
 
 // routes
-
 app.use('/api/mines', mineRoutes)
 app.use('/api/stores', storeRoutes)
+app.use('/api/map', mapRoutes)
+app.use('/api/planet', planetRoutes)
 
 
 // connect to MongoDB

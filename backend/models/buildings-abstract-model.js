@@ -3,8 +3,14 @@ const Schema = mongoose.Schema
 
 // Abstract buildingSchema
 const buildingSchema = new Schema({
+    planet: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'Planet',
+        required: true // A building can not exist without a planet.
+    },
     name: { type: String },
     level: { type: Number, default: 0, min: 0, max: 20 },
+    population: { type: Number, default: 0 },
     health: { type: Number, default: 0 },
     upgradeDuration: { type: Number, default: 0 },
     upgradeDurationBase: { type: Number, default: 0 },
@@ -25,6 +31,13 @@ const buildingSchema = new Schema({
 buildingSchema.methods.calculateUpgradeDuration = function() {
     // Arithmetic sum formula: n * (n + 1) / 2
     return this.upgradeDurationBase * (this.level * (this.level + 1) / 2)
+}
+
+// Method to calculate next upgrade duration
+// TODO Check if possible to define methods in another way
+buildingSchema.methods.calculateBuildingPopulation = function() {
+    // Arithmetic sum formula: n * (n + 1) / 2
+    return (this.level * (this.level + 1) / 2)
 }
 
 // Create a base model
