@@ -48,7 +48,8 @@ const createResourceBuildings = async (Model, TypesEnum, baseUpgradeDuration, up
                 planet: planetId,
                 upgradeDurationBase: baseUpgradeDuration,
                 upgradeDuration: baseUpgradeDuration,
-                upgradeCosts: upgradeCostsEnum[type]
+                upgradeCosts: upgradeCostsEnum[type], 
+                upgradeCostsBase:upgradeCostsEnum[type],
             })
 
             return await newBuilding.save()
@@ -66,7 +67,8 @@ const createFacilityBuilding = async (planetId, Model, baseUpgradeDuration, upgr
             planet: planetId,
             upgradeDurationBase: baseUpgradeDuration,
             upgradeDuration: baseUpgradeDuration,
-            upgradeCosts: upgradeCosts
+            upgradeCosts: upgradeCosts,
+            upgradeCostsBase:upgradeCosts,
         })
 
         return await newBuilding.save()

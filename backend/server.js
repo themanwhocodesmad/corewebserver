@@ -6,13 +6,15 @@ const mineRoutes = require('./routes/mines-routes')
 const storeRoutes = require('./routes/stores-routes')
 const planetRoutes = require('./routes/planets-routes')
 const solarArrayRoutes = require('./routes/solar-array-routes')
-const commStationRoutes = require('./routes/comm-station-routes');
+const commStationRoutes = require('./routes/comm-station-routes')
 
 // Gameplay related route imports
 const mapRoutes = require('./routes/map-routes')
+const processRoutes = require('./routes/process-routes/process-routes')
 
 // Schedular imports
-require('./utils/scheduler-fuctions/map-schedulars'); // Initialization to be able to use scheduler/periodic functions
+require('./utils/scheduler-fuctions/map-schedulars') // Initialization to be able to use scheduler/periodic functions
+require('./utils/scheduler-fuctions/upgrade-schedular') 
 
 
 const { default: mongoose } = require('mongoose')
@@ -36,6 +38,9 @@ app.use('/api/map', mapRoutes)
 app.use('/api/planet', planetRoutes)
 app.use('/api/array', solarArrayRoutes)
 app.use('/api/comm-stations', commStationRoutes)
+
+// Real code
+app.use('/api/process', processRoutes)
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)

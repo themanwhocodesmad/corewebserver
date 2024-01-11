@@ -14,9 +14,18 @@ const buildingSchema = new Schema({
     health: { type: Number, default: 0 },
     upgradeDuration: { type: Number, default: 0 },
     upgradeDurationBase: { type: Number, default: 0 },
-    upgradeStartTime: { type: Number, default: 0 },
+    upgradeStartTime: {
+        type: Date, 
+        default: null, 
+      },
     taskId: { type: Number, default: 0 },
     upgradeCosts: {
+        metal: { type: Number, default: 120 },
+        crystal: { type: Number, default: 120 },
+        gas: { type: Number, default: 120 },
+        energy: { type: Number, default: 5 },
+    },
+    upgradeCostsBase: {
         metal: { type: Number, default: 120 },
         crystal: { type: Number, default: 120 },
         gas: { type: Number, default: 120 },
