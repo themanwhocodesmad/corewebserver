@@ -5,6 +5,8 @@ const express = require('express')
 const mineRoutes = require('./routes/mines-routes')
 const storeRoutes = require('./routes/stores-routes')
 const planetRoutes = require('./routes/planets-routes')
+const solarArrayRoutes = require('./routes/solar-array-routes')
+const commStationRoutes = require('./routes/comm-station-routes');
 
 // Gameplay related route imports
 const mapRoutes = require('./routes/map-routes')
@@ -32,7 +34,8 @@ app.use('/api/mines', mineRoutes)
 app.use('/api/stores', storeRoutes)
 app.use('/api/map', mapRoutes)
 app.use('/api/planet', planetRoutes)
-
+app.use('/api/array', solarArrayRoutes)
+app.use('/api/comm-stations', commStationRoutes)
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
