@@ -1,5 +1,5 @@
 const Planet = require('../models/planets-model');
-const createBuildingsForPlanet = require('./process-controllers/create-buildings-for-planet')
+const createBuildingsForPlanet = require('./process-controllers/create-buildings-for-planet-controller')
 const { generateInitialPlanetRandomName } = require('../utils/map-processes/initial-naming-functions');
 
 

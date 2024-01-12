@@ -10,7 +10,7 @@ const solarArraySchema = new Schema({
 
 
 // Override the upgrade function
-solarArraySchemaSchema.methods.upgrade = function() {
+solarArraySchema.methods.upgrade = function() {
     Building.prototype.upgrade.call(this)
     this.generated_resources += GENERATED_RESOURCES
   }
