@@ -23,7 +23,12 @@ async function productionRateStoreFiller() {
             const store = stores.find(s => s.storeType === mine.mineType);
 
             if (store) {
-                store.storage += MINES_PRODUCTION_RATE_TIME_MULTIPLIER*mine.productionRate;
+                // Calculate the new storage amount
+                let newStorage = store.storage + MINES_PRODUCTION_RATE_TIME_MULTIPLIER * mine.productionRate;
+
+                // Ensure the storage does not exceed the capacity
+                store.storage = Math.min(newStorage, store.capacity);
+
                 await store.save(); // Save the updated store storage
             }
         }
@@ -31,6 +36,7 @@ async function productionRateStoreFiller() {
         console.error('Error in productionRateStoreFiller:', error);
     }
 }
+
 
 
 module.exports = {productionRateStoreFiller}

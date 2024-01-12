@@ -53,7 +53,7 @@ buildingSchema.methods.calculateBuildingPopulation = function() {
 buildingSchema.methods.upgrade = function() {
     // common upgrade logic
     this.level++
-    this.population = this.methods.calculateBuildingPopulation()
+    this.population = this.calculateBuildingPopulation()
     this.taskId = null
 
 
