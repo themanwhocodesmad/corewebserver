@@ -2,13 +2,13 @@
 const MINES_BASE_UPGRADE_DURATION = 20 // seconds
 
 const MineTypes = {
-    OXYGEN: 'Oxygen',
+    METAL: 'Metal',
     GAS: 'Gas',
     CRYSTAL: 'Crystal'
 };
 
 const MinesUpgradeCosts = {
-    [MineTypes.OXYGEN]: {
+    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,

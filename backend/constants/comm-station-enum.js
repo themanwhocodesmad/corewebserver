@@ -5,7 +5,7 @@ const COMM_STATION_BASE_UPGRADE_DURATION = 40 // seconds
 
 // Based on Mine Types
 const CommStationUpgradeCosts = {
-    [MineTypes.OXYGEN]: {
+    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,

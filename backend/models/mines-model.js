@@ -8,7 +8,7 @@ const mineSchema = new Schema({
     productionRate: { type: Number, default: 0 },
     mineType: {
         type: String,
-        enum: ['Oxygen', 'Gas', 'Crystal'],
+        enum: ['Metal', 'Gas', 'Crystal'],
         required: true
     },
 })

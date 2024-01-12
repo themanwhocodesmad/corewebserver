@@ -10,7 +10,7 @@ const storeSchema = new Schema({
     active: { type: Boolean, default: true },
     storeType: {
         type: String,
-        enum: ['Oxygen', 'Gas', 'Crystal'],
+        enum: ['Metal', 'Gas', 'Crystal'],
         required: true
     },
 })

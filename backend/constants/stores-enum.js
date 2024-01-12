@@ -6,7 +6,7 @@ const STORE_BASE_UPGRADE_DURATION = 40 // seconds
 
 // Based on Mine Types
 const StoresUpgradeCosts = {
-    [MineTypes.OXYGEN]: {
+    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,

@@ -21,40 +21,27 @@ const upgradeBuilding = async (req, res) => {
 
         // Fetch all stores associated with the planet
         const stores = await Store.find({ planet: planet._id })
-        //console.log('Stores found:', stores);
+        //console.log('Stores found:', stores)
         if (stores.length !== 3) { // Assuming there are exactly 3 stores per planet
             return res.status(404).send({ message: 'Stores not found or incomplete on planet' })
         }
 
         const upgradeCosts = building.upgradeCosts
-        let sufficientResources = true
         
-        // Check for each resource in the upgrade costs
-        for (const [resource, cost] of Object.entries(upgradeCosts)) {
-            console.log(resource, 'being checked now. Has a cost of', cost);
-            const resourceStore = stores.find(store => store.storeType.toLowerCase() === resource.toLowerCase())
-            console.log('Stores comparing is:', resourceStore);
-            if (!resourceStore || resourceStore.capacity < cost) {
-                sufficientResources = false
-                break
-            }
-        }
+        // Check for each resource in the upgrade costs using resourceCheck function
+        const allResourcesSufficient = await checkAndDeductResources(stores, upgradeCosts)
 
-        if (!sufficientResources) {
+        if (!allResourcesSufficient) {
             return res.status(400).send({ message: 'Insufficient resources for upgrade' })
-        }
-
-        // Deduct resources from stores
-        for (const [resource, cost] of Object.entries(upgradeCosts)) {
-            const resourceStore = stores.find(store => store.storeType.toLowerCase() === resource.toLowerCase())
-            resourceStore.capacity -= cost
-            await resourceStore.save()
         }
 
         // Update the building within the transaction
         building.upgradeDuration += building.upgradeDurationBase
         building.upgradeStartTime = new Date(Date.now())
-        building.upgradeCosts += building.upgradeCostsBase
+        building.upgradeCosts = Object.keys(building.upgradeCosts).reduce((newCosts, key) => {
+            newCosts[key] = (building.upgradeCosts[key] || 0) + (building.upgradeCostsBase[key] || 0);
+            return newCosts;
+        }, {})
 
         // save session, atomic transaction can be rolled back
         await building.save({session})
@@ -66,9 +53,6 @@ const upgradeBuilding = async (req, res) => {
 
         // Commit the transaction
         await session.commitTransaction()
-
-        // Add a mongo db transaction which will increase the upgradeduration by base upgrade duration, the upgradeCosts by baseupgradeCosts.
-        // This must be rolled back if the upgradeAgenda gets interrupted, e.i, player chooses to cancel the upgrade.
 
 
         res.status(200).send({ message: 'Building upgraded successfully', building })
@@ -96,14 +80,19 @@ const cancelBuildingUpgrade = async (req, res) => {
 
         // Revert upgrade costs, considering time elapsed
         if (building.upgradeCostsBase && building.upgradeStartTime) {
-            const elapsedTime = Date.now() - building.upgradeStartTime.getTime()  // Calculate elapsed milliseconds
-            const percentElapsed = elapsedTime / building.upgradeDuration          // Calculate percentage of upgrade time elapsed
-  
-            for (const [key, value] of Object.entries(building.upgradeCostsBase)) {
-            const costToReturn = value * percentElapsed                      // Calculate cost to return based on percentage
-            building.upgradeCosts[key] -= costToReturn                        // Subtract the calculated cost from upgradeCosts
-                }
+            const elapsedTime = Date.now() - building.upgradeStartTime.getTime(); // Calculate elapsed milliseconds
+            const percentElapsed = elapsedTime / building.upgradeDuration;        // Calculate percentage of upgrade time elapsed
+        
+            for (const [key, baseValue] of Object.entries(building.upgradeCostsBase)) {
+                const totalCost = building.upgradeCosts[key] || 0;                // Total cost for this key
+                const lastUpgradeCost = totalCost - baseValue;                    // Cost used in the last upgrade
+                const costToReturn = lastUpgradeCost * percentElapsed;            // Calculate cost to return based on percentage
+        
+                // Update the upgrade costs, ensuring it doesn't drop below the base value
+                building.upgradeCosts[key] = Math.max(baseValue, totalCost - costToReturn);
             }
+        }
+        
 
         // Revert the building's upgradeDuration and upgradeCosts
         building.upgradeDuration -= building.upgradeDurationBase
@@ -118,6 +107,38 @@ const cancelBuildingUpgrade = async (req, res) => {
     }
 }
 
+
+async function checkAndDeductResources(stores, upgradeCosts) {
+    let sufficientResources = true
+
+    // Map store types to their corresponding upgrade cost key
+    const storeTypeToCostKey = {
+        'Gas': 'gas',
+        'Crystal': 'crystal',
+        'Metal': 'metal'
+   }
+
+    const saveOperations = stores.map(async (store) => {
+        const costKey = storeTypeToCostKey[store.storeType]
+        if (costKey && store.capacity >= upgradeCosts[costKey]) {
+            // Deducting the cost from the store's capacity
+            store.capacity -= upgradeCosts[costKey]
+            try {
+                await store.save()
+            } catch (error) {
+                sufficientResources = false
+                console.error(`Failed to save ${store.storeType} store:`, error)
+            }
+        } else {
+            sufficientResources = false
+            console.log(`Insufficient capacity in ${store.storeType} store to deduct costs.`)
+        }
+    })
+
+    await Promise.all(saveOperations)
+
+    return sufficientResources
+}
 
 module.exports = {upgradeBuilding, cancelBuildingUpgrade}
 

@@ -15,7 +15,7 @@ const ResearchAndDevelopmentUpgradeCosts = {
 }
 
 const ImpulseBoostUpgradeCosts = {
-    [MineTypes.OXYGEN]: {
+    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,
@@ -36,7 +36,7 @@ const ImpulseBoostUpgradeCosts = {
 }
 
 const ConstructionBoostUpgradeCosts = {
-    [MineTypes.OXYGEN]: {
+    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,
@@ -57,7 +57,7 @@ const ConstructionBoostUpgradeCosts = {
 }
 
 const AlienTechnologypgradeCosts = {
-    [MineTypes.OXYGEN]: {
+    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,
