@@ -15,6 +15,8 @@ const { FORGE_BASE_UPGRADE_DURATION, ForgeUpgradeCosts } = require('../../consta
 const { RESEARCH_AND_DEVELOPMENT_BASE_UPGRADE_DURATION, ResearchAndDevelopmentUpgradeCosts } = require('../../constants/research-and-development-enum')
 const ResearchAndDevelopment = require('../../models/research-and-development-models')
 const Forge = require('../../models/forge-model')
+const Armoury = require('../../models/troop-models/armoury-model')
+const { TROOPS_DATA } = require('../../constants/troop-constants/troops-enum')
 
 
 // Bulk Function to initiating a planet with all buildings - current Mines and Stores
@@ -33,7 +35,19 @@ const createBuildingsForPlanet = async (planetId) => {
         createFacilityBuilding(planetId, ResearchAndDevelopment, RESEARCH_AND_DEVELOPMENT_BASE_UPGRADE_DURATION, ResearchAndDevelopmentUpgradeCosts, "Research and Development"),
         createFacilityBuilding(planetId, Forge, FORGE_BASE_UPGRADE_DURATION, ForgeUpgradeCosts, "Forge")     ]
 
-        await Promise.all([...resourceBuildings, ...storeBuildings, ...facilityBuildings]);
+        // Create Armoury for the planet
+        const newArmoury = new Armoury({ planet: planetId })
+        await newArmoury.save()
+
+        const troopCreationPromises = Object.keys(TROOPS_DATA).map(troopType => {
+            return createTroop(troopType, newPlanet._id)
+        })
+
+        const createdTroops = await Promise.all(troopCreationPromises)
+        newArmoury.troops.push(...createdTroops)
+        await newArmoury.save()
+
+        await Promise.all([...resourceBuildings, ...storeBuildings, ...facilityBuildings])
 } catch (error) {
     console.error('Error creating buildings for planet:', error)
 }
