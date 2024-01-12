@@ -10,6 +10,7 @@ const troopSchema = new Schema({
     cargoSpace: { type: Number, required: true },
     constructionTime: { type: Number, required: true }, // in seconds
     helium3Tax: { type: Number, required: true },
+    helium3Tax: { type: Number, default: 1 },
     armoury: { 
         type: Schema.Types.ObjectId, 
         ref: 'Armoury', 

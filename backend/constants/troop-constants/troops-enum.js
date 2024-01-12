@@ -1,7 +1,7 @@
 const BOMB_BUILDING_DAMAGE = 1
 
 const TROOP_COSTS = {
-    'Infantry_units': {
+    'Infantry_troops': {
         'crystal': 100,
         'oxygen': 50,
         'Uranium': 300,
@@ -25,7 +25,7 @@ const TROOP_COSTS = {
         'Uranium': 200,
         'helium': 0,
     },
-    'harvesters': {
+    'Harvesters': {
         'crystal': 3000,
         'oxygen': 2100,
         'Uranium': 1800,
@@ -58,7 +58,8 @@ const TROOP_ChOICES = [
 
 
 const TROOPS_DATA = {
-    'Infantry_units': {
+    'Infantry_troops': {
+        'name': 'Infantry troops', 
         'attackHp': 100,
         'defenseHp': 25,
         'speed': 9000,
@@ -67,6 +68,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Assault_Tanks': {
+        'name': 'Assualt tanks', 
         'attackHp': 250,
         'defenseHp': 70,
         'speed': 11000,
@@ -75,6 +77,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Drone_Troopers': {
+        'name': 'Drone troopers', 
         'attackHp': 175,
         'defenseHp': 150,
         'speed': 15000,
@@ -83,6 +86,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Sentinels': {
+        'name': 'Sentinels', 
         'attackHp': 80,
         'defenseHp': 150,
         'speed': 8000,
@@ -90,7 +94,8 @@ const TROOPS_DATA = {
         'constructionTime': 180,  // seconds
         'helium3Tax': 1,
     },
-    'harvesters': {
+    'Harvesters': {
+        'name': 'Harvesters', 
         'attackHp': 25,
         'defenseHp': 20,
         'speed': 20000,
@@ -99,6 +104,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Bombers': {
+        'name': 'Bombers', 
         'attackHp': 15,
         'defenseHp': 15,
         'speed': 10000,
@@ -107,6 +113,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Marauders': {
+        'name': 'Marauders', 
         'attackHp': 15,
         'defenseHp': 15,
         'speed': 17000,
