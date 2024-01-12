@@ -11,6 +11,7 @@ const forgeSchema = new Schema({
     },
 })
 
+
 // Adding Forge as a discriminator of Building
 const Forge = Building.discriminator('Forge', forgeSchema)
 

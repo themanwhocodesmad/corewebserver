@@ -45,9 +45,9 @@ const upgradeStore = async (req, res) => {
         }
 
         //!TODO Add a function that will process upgrades below is just example
-        //Increment the level of the store and recalculate capacity
+        //Increment the level of the store and recalculate storage
         store.level += 1
-        store.capacity = store.calculateCapacity() 
+        store.storage = store.calculateCapacity() 
 
         await store.save()
         res.status(200).json({ msg: 'Store upgraded successfully', store: store })

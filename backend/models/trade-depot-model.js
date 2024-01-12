@@ -7,6 +7,13 @@ const tradeDepotSchema = new Schema({
     activateTrade: { type: Boolean, default: false },
 })
 
+// Override the upgrade function
+tradeDepotSchema.methods.upgrade = function() {
+    Building.prototype.upgrade.call(this)
+    if (this.level ==3)
+        this.activateTrade = true
+  }
+
 // Adding Trade Depot as a discriminator of Building
 const TradeDepot = Building.discriminator('Trade depot', tradeDepotSchema)
 

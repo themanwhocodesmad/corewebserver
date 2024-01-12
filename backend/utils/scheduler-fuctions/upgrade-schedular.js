@@ -16,7 +16,7 @@ upgradeAgenda.define('completeBuildingUpgrade', async (job, done) => {
     }
 
     // Perform the upgrade
-    building.level += 1;
+    building.upgrade();
 
     await building.save();
     done();
@@ -25,6 +25,7 @@ upgradeAgenda.define('completeBuildingUpgrade', async (job, done) => {
     done(error);
   }
 });
+
 
 (async () => {
   await upgradeAgenda.start();

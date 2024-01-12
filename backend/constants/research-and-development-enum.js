@@ -15,69 +15,28 @@ const ResearchAndDevelopmentUpgradeCosts = {
 }
 
 const ImpulseBoostUpgradeCosts = {
-    [MineTypes.METAL]: {
         metal: 100,
         crystal: 150,
         gas: 200,
         energy: 10
-    },
-    [MineTypes.GAS]: {
-        metal: 120,
-        crystal: 180,
-        gas: 220,
-        energy: 15
-    },
-    [MineTypes.CRYSTAL]: {
-        metal: 140,
-        crystal: 200,
-        gas: 250,
-        energy: 20
-    }
+
 }
 
 const ConstructionBoostUpgradeCosts = {
-    [MineTypes.METAL]: {
-        metal: 100,
-        crystal: 150,
-        gas: 200,
-        energy: 10
-    },
-    [MineTypes.GAS]: {
-        metal: 120,
-        crystal: 180,
-        gas: 220,
-        energy: 15
-    },
-    [MineTypes.CRYSTAL]: {
-        metal: 140,
-        crystal: 200,
-        gas: 250,
-        energy: 20
-    }
+    metal: 100,
+    crystal: 150,
+    gas: 200,
+    energy: 10
+
 }
 
 const AlienTechnologypgradeCosts = {
-    [MineTypes.METAL]: {
-        metal: 100,
-        crystal: 150,
-        gas: 200,
-        energy: 10
-    },
-    [MineTypes.GAS]: {
-        metal: 120,
-        crystal: 180,
-        gas: 220,
-        energy: 15
-    },
-    [MineTypes.CRYSTAL]: {
-        metal: 140,
-        crystal: 200,
-        gas: 250,
-        energy: 20
-    }
+    metal: 1000,
+    crystal: 1500,
+    gas: 2000,
+    energy: 100
+
 }
-
-
 
 
 module.exports = {

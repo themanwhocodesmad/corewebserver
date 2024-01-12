@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Building = require('./buildings-abstract-model')
-const { STORE_CAPACITY_MULTIPLIER } = require('../constants/stores-enum');
+const { STORE_CAPACITY_MULTIPLIER } = require('../constants/stores-enum')
 
 
 // Store Schema extending Building Schema
 const storeSchema = new Schema({
-    capacity: { type: Number, default: 1000 },
+    storage: { type: Number, default: 10000 },
     active: { type: Boolean, default: true },
     storeType: {
         type: String,
@@ -15,11 +15,11 @@ const storeSchema = new Schema({
     },
 })
 
-// Method to calculate capacity based on level
-storeSchema.methods.calculateCapacity = function() {
-    return 1000 + STORE_CAPACITY_MULTIPLIER * this.level;
-};
-
+// Override the upgrade function
+storeSchema.methods.upgrade = function() {
+    Building.prototype.upgrade.call(this)
+    this.storage += STORE_CAPACITY_MULTIPLIER
+  }
 
 const Store = Building.discriminator('Store', storeSchema)
 

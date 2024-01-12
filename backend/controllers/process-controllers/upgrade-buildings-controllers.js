@@ -120,9 +120,9 @@ async function checkAndDeductResources(stores, upgradeCosts) {
 
     const saveOperations = stores.map(async (store) => {
         const costKey = storeTypeToCostKey[store.storeType]
-        if (costKey && store.capacity >= upgradeCosts[costKey]) {
-            // Deducting the cost from the store's capacity
-            store.capacity -= upgradeCosts[costKey]
+        if (costKey && store.storage >= upgradeCosts[costKey]) {
+            // Deducting the cost from the store's storage
+            store.storage -= upgradeCosts[costKey]
             try {
                 await store.save()
             } catch (error) {
@@ -131,7 +131,7 @@ async function checkAndDeductResources(stores, upgradeCosts) {
             }
         } else {
             sufficientResources = false
-            console.log(`Insufficient capacity in ${store.storeType} store to deduct costs.`)
+            console.log(`Insufficient storage in ${store.storeType} store to deduct costs.`)
         }
     })
 

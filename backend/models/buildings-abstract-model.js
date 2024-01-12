@@ -18,7 +18,7 @@ const buildingSchema = new Schema({
         type: Date, 
         default: null, 
       },
-    taskId: { type: Number, default: 0 },
+    taskId: { type: Number, default: null },
     upgradeCosts: {
         metal: { type: Number, default: 120 },
         crystal: { type: Number, default: 120 },
@@ -48,6 +48,16 @@ buildingSchema.methods.calculateBuildingPopulation = function() {
     // Arithmetic sum formula: n * (n + 1) / 2
     return (this.level * (this.level + 1) / 2)
 }
+
+// Base upgrade method
+buildingSchema.methods.upgrade = function() {
+    // common upgrade logic
+    this.level++
+    this.population = this.methods.calculateBuildingPopulation()
+    this.taskId = null
+
+
+  }
 
 // Create a base model
 module.exports = mongoose.model('Building', buildingSchema)

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Building = require('./buildings-abstract-model')
+const { MINES_PRODUCTION_RATE } = require('../constants/mines-enum')
 
 // Mine Schema extending Building Schema
 const mineSchema = new Schema({
-    generated_resources: { type: Number, default: 0 },
     productionRate: { type: Number, default: 0 },
     mineType: {
         type: String,
@@ -12,6 +12,11 @@ const mineSchema = new Schema({
         required: true
     },
 })
+
+mineSchema.methods.upgrade = function() {
+    Building.prototype.upgrade.call(this);
+    this.productionRate += MINES_PRODUCTION_RATE;
+  }
 
 // Adding Mine as a discriminator of Building
 const Mine = Building.discriminator('Mine', mineSchema)

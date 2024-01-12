@@ -55,8 +55,8 @@ const upgradeSolarArray = async (req, res) => {
         solarArray.level += 1;
 
         // Assuming calculateCapacity is a method in your SolarArray model
-        // that recalculates capacity based on the current level
-        solarArray.capacity = solarArray.calculateCapacity();
+        // that recalculates storage based on the current level
+        solarArray.storage = solarArray.calculateCapacity();
 
         await solarArray.save();
         res.status(200).json({ msg: 'SolarArray upgraded successfully', solarArray: solarArray });
