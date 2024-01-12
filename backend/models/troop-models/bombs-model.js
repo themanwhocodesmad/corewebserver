@@ -1,3 +1,6 @@
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+
 const Troop = require('./troops-abstract-model') // Import the generic Troop model
 
 // Bomb Troop Schema

@@ -17,6 +17,7 @@ const ResearchAndDevelopment = require('../../models/research-and-development-mo
 const Forge = require('../../models/forge-model')
 const Armoury = require('../../models/troop-models/armoury-model')
 const { TROOPS_DATA } = require('../../constants/troop-constants/troops-enum')
+const createTroop = require('./create-instantiation-troops-for-planet-controller')
 
 
 // Bulk Function to initiating a planet with all buildings - current Mines and Stores
@@ -40,12 +41,14 @@ const createBuildingsForPlanet = async (planetId) => {
         await newArmoury.save()
 
         const troopCreationPromises = Object.keys(TROOPS_DATA).map(troopType => {
-            return createTroop(troopType, newPlanet._id)
-        })
-
-        const createdTroops = await Promise.all(troopCreationPromises)
-        newArmoury.troops.push(...createdTroops)
-        await newArmoury.save()
+            // Pass the ID of the newly created Armoury, not the planet
+            return createTroop(troopType, newArmoury._id);
+        });
+        
+        const createdTroops = await Promise.all(troopCreationPromises);
+        newArmoury.troops.push(...createdTroops);
+        await newArmoury.save();
+        
 
         await Promise.all([...resourceBuildings, ...storeBuildings, ...facilityBuildings])
 } catch (error) {

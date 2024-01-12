@@ -59,60 +59,60 @@ const TROOP_ChOICES = [
 
 const TROOPS_DATA = {
     'Infantry_units': {
-        'attack_hp': 100,
-        'defense_hp': 25,
+        'attackHp': 100,
+        'defenseHp': 25,
         'speed': 9000,
-        'cargo_space': 120,
-        'construction_time': 160,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 120,
+        'constructionTime': 160,  // seconds
+        'helium3Tax': 1,
     },
     'Assault_Tanks': {
-        'attack_hp': 250,
-        'defense_hp': 70,
+        'attackHp': 250,
+        'defenseHp': 70,
         'speed': 11000,
-        'cargo_space': 50,
-        'construction_time': 300,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 50,
+        'constructionTime': 300,  // seconds
+        'helium3Tax': 1,
     },
     'Drone_Troopers': {
-        'attack_hp': 175,
-        'defense_hp': 150,
+        'attackHp': 175,
+        'defenseHp': 150,
         'speed': 15000,
-        'cargo_space': 180,
-        'construction_time': 385,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 180,
+        'constructionTime': 385,  // seconds
+        'helium3Tax': 1,
     },
     'Sentinels': {
-        'attack_hp': 80,
-        'defense_hp': 150,
+        'attackHp': 80,
+        'defenseHp': 150,
         'speed': 8000,
-        'cargo_space': 100,
-        'construction_time': 180,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 100,
+        'constructionTime': 180,  // seconds
+        'helium3Tax': 1,
     },
     'harvesters': {
-        'attack_hp': 25,
-        'defense_hp': 20,
+        'attackHp': 25,
+        'defenseHp': 20,
         'speed': 20000,
-        'cargo_space': 1000,
-        'construction_time': 120,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 1000,
+        'constructionTime': 120,  // seconds
+        'helium3Tax': 1,
     },
     'Bombers': {
-        'attack_hp': 15,
-        'defense_hp': 15,
+        'attackHp': 15,
+        'defenseHp': 15,
         'speed': 10000,
-        'cargo_space': 1,
-        'construction_time': 500,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 1,
+        'constructionTime': 500,  // seconds
+        'helium3Tax': 1,
     },
     'Marauders': {
-        'attack_hp': 15,
-        'defense_hp': 15,
+        'attackHp': 15,
+        'defenseHp': 15,
         'speed': 17000,
-        'cargo_space': 450,  // Can only raid helium
-        'construction_time': 90,  // seconds
-        'helium_3_tax': 1,
+        'cargoSpace': 450,  // Can only raid helium
+        'constructionTime': 90,  // seconds
+        'helium3Tax': 1,
     },
 }
 
