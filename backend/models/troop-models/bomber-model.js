@@ -3,18 +3,18 @@ const Schema = mongoose.Schema
 
 const Troop = require('./troops-abstract-model') // Import the generic Troop model
 
-// Bomb Troop Schema
-const bombsSchema = new mongoose.Schema({
-    // Additional properties specific to Bomb Troops
+// Bomber Troop Schema
+const bombersSchema = new mongoose.Schema({
+    // Additional properties specific to Bomber Troops
     buildingDamage: { type: Number, required: true },
 })
 
 // Method for bomb explosion
-bombsSchema.methods.explode = function() {
+bombersSchema.methods.explode = function() {
     //
 }
 
 // Inherit from Troop
-const Bombs = Troop.discriminator('Bombs', bombsSchema)
+const Bombers = Troop.discriminator('Bombers', bombersSchema)
 
-module.exports = Bombs
+module.exports = Bombers

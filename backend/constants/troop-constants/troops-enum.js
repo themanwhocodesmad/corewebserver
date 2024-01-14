@@ -1,52 +1,52 @@
 const BOMB_BUILDING_DAMAGE = 1
 
 const TROOP_COSTS = {
-    'Infantry_troops': {
+    'Infantry_Troops': {
         'crystal': 100,
-        'oxygen': 50,
-        'Uranium': 300,
+        'metal': 50,
+        'gas': 300,
         'helium': 0,
     },
     'Assault_Tanks': {
         'crystal': 300,
-        'oxygen': 200,
-        'Uranium': 180,
+        'metal': 200,
+        'gas': 180,
         'helium': 0,
     },
     'Drone_Troopers': {
         'crystal': 240,
-        'oxygen': 150,
-        'Uranium': 210,
+        'metal': 150,
+        'gas': 210,
         'helium': 0,
     },
     'Sentinels': {
         'crystal': 180,
-        'oxygen': 250,
-        'Uranium': 200,
+        'metal': 250,
+        'gas': 200,
         'helium': 0,
     },
     'Harvesters': {
         'crystal': 3000,
-        'oxygen': 2100,
-        'Uranium': 1800,
+        'metal': 2100,
+        'gas': 1800,
         'helium': 0,
     },
     'Bombers': {
         'crystal': 2000,
-        'oxygen': 3500,
-        'Uranium': 500,
+        'metal': 3500,
+        'gas': 500,
         'helium': 0,
     },
     'Marauders': {
         'crystal': 2500,
-        'oxygen': 1500,
-        'Uranium': 700,
+        'metal': 1500,
+        'gas': 700,
         'helium': 0,
     }
 }
 
 
-const TROOP_ChOICES = [
+const TROOP_CHOICES = [
     ('Infantry', 'Infantry units'),
     ('AssaultTanks', 'Assault Tanks'),
     ('DroneTroopers', 'Drone Troopers'),
@@ -58,8 +58,8 @@ const TROOP_ChOICES = [
 
 
 const TROOPS_DATA = {
-    'Infantry_troops': {
-        'name': 'Infantry troops', 
+    'Infantry_Troops': {
+        'name': 'Infantry troops',
         'attackHp': 100,
         'defenseHp': 25,
         'speed': 9000,
@@ -68,7 +68,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Assault_Tanks': {
-        'name': 'Assualt tanks', 
+        'name': 'Assault tanks',
         'attackHp': 250,
         'defenseHp': 70,
         'speed': 11000,
@@ -104,7 +104,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Bombers': {
-        'name': 'Bombers', 
+        'name': 'Bombers',
         'attackHp': 15,
         'defenseHp': 15,
         'speed': 10000,
@@ -113,7 +113,7 @@ const TROOPS_DATA = {
         'helium3Tax': 1,
     },
     'Marauders': {
-        'name': 'Marauders', 
+        'name': 'Marauders',
         'attackHp': 15,
         'defenseHp': 15,
         'speed': 17000,
@@ -123,4 +123,4 @@ const TROOPS_DATA = {
     },
 }
 
-module.exports = {TROOPS_DATA, TROOP_COSTS, TROOP_ChOICES, BOMB_BUILDING_DAMAGE}
+module.exports = {TROOPS_DATA, TROOP_COSTS, TROOP_CHOICES, BOMB_BUILDING_DAMAGE}

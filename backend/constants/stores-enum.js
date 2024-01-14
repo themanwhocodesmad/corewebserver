@@ -25,12 +25,19 @@ const StoresUpgradeCosts = {
         gas: 250,
         energy: 20
     }
-};
+}
+
+const STORE_TYPE_TO_COST_KEY = {
+        'Gas': 'gas',
+        'Crystal': 'crystal',
+        'Metal': 'metal'
+   }
 
 module.exports = {
     STORE_CAPACITY_MULTIPLIER,
     STORE_BASE_UPGRADE_DURATION,
     INITIAL_STORAGE_CAPACITY,
     StoresUpgradeCosts,
+    STORE_TYPE_TO_COST_KEY,
     
 }

@@ -2,19 +2,19 @@
 const SPECIAL_TROOP_COSTS = {
     'Gaea Guardians': {
         'Boron': 15000,
-        'Oxygen': 5000,
+        'Metal': 5000,
         'Uranium': 20000,
         'Helium': 100,
     },
     'Phoenix Sentinels': {
         'Boron': 10000,
-        'Oxygen': 8000,
+        'Metal': 8000,
         'Uranium': 18000,
         'Helium': 50,
     },
     'Stormbringer Ravagers': {
         'Boron': 12000,
-        'Oxygen': 10000,
+        'Metal': 10000,
         'Uranium': 15000,
         'Helium': 150,
     },

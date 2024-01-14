@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Agenda = require('agenda');
-const { productionRateStoreFiller } = require("../../controllers/process-controllers/mine-production-to-storage-controller");
-const { MINES_PRODUCTION_RATE_TIME_MULTIPLIER } = require("../../constants/mines-enum");
+const { productionRateStoreFiller } = require("../controllers/process-controllers/mine-production-to-storage-controller");
+const { MINES_PRODUCTION_RATE_TIME_MULTIPLIER } = require("../constants/mines-enum");
 
 const mongoConnectionString = process.env.MONGO_URI;
 const productionRateAgenda = new Agenda({ db: { address: mongoConnectionString } });

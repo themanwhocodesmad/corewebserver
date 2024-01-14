@@ -10,17 +10,15 @@ const troopSchema = new Schema({
     cargoSpace: { type: Number, required: true },
     constructionTime: { type: Number, required: true }, // in seconds
     helium3Tax: { type: Number, required: true },
-    helium3Tax: { type: Number, default: 1 },
     armoury: { 
         type: Schema.Types.ObjectId, 
         ref: 'Armoury', 
         required: true 
     },
     costs: {
-        boron: { type: Number, default: 0 },
-        oxygen: { type: Number, default: 0 },
-        uranium: { type: Number, default: 0 },
-        helium: { type: Number, default: 0 },
+        crystal: { type: Number, default: 0 },
+        metal: { type: Number, default: 0 },
+        gas: { type: Number, default: 0 },
     },
 }, { discriminatorKey: 'type', collection: 'troops' })
 

@@ -9,8 +9,14 @@ const armourySchema = new Schema({
         required: true
     },
     fleets: [fleetSchema],
-})
+    troops: [{
+        troopType: { type: Schema.Types.ObjectId, ref: 'Troop' },
+        troopName: { type: String }, // Added field for troop name
+        quantity: { type: Number, required: true, default: 0 }
+    }],
+});
 
-const Armoury = mongoose.model('Armoury', armourySchema)
+const Armoury = mongoose.model('Armoury', armourySchema);
 
-module.exports = Armoury
+module.exports = Armoury;
+

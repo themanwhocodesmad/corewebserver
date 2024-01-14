@@ -55,9 +55,8 @@ buildingSchema.methods.upgrade = function() {
     this.level++
     this.population = this.calculateBuildingPopulation()
     this.taskId = null
-
-
   }
 
 // Create a base model
-module.exports = mongoose.model('Building', buildingSchema)
+const Building = mongoose.model('Building', buildingSchema)
+module.exports = Building

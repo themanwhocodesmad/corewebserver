@@ -42,12 +42,12 @@ const createBuildingsForPlanet = async (planetId) => {
 
         const troopCreationPromises = Object.keys(TROOPS_DATA).map(troopType => {
             // Pass the ID of the newly created Armoury, not the planet
-            return createTroop(troopType, newArmoury._id);
+            return createTroop.createTroop(troopType, newArmoury._id);
         });
         
         const createdTroops = await Promise.all(troopCreationPromises);
         newArmoury.troops.push(...createdTroops);
-        await newArmoury.save();
+        await newArmoury.save()
         
 
         await Promise.all([...resourceBuildings, ...storeBuildings, ...facilityBuildings])
