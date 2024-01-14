@@ -1,6 +1,6 @@
 const Agenda = require('agenda');
-const ConstructionQueue = require('../models/troop-models/construction-queue-model');
-const Armoury = require('../models/troop-models/armoury-model'); 
+const ConstructionQueue = require('../models/game-models/armoury-models/construction-queue-model');
+const Armoury = require('../models/game-models/armoury-models/armoury-model'); 
 
 
 const mongoConnectionString = process.env.MONGO_URI;

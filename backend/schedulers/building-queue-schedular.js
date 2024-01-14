@@ -1,6 +1,6 @@
 const Agenda = require('agenda');
-const BuildingQueue = require('../models/building-upgrade-queue');
-const Building = require('../models/buildings-abstract-model');
+const BuildingQueue = require('../models/game-models/building-models/building-upgrade-queue');
+const Building = require('../models/game-models/building-models/buildings-abstract-model');
 
 const mongoConnectionString = process.env.MONGO_URI;
 const buildingQueueAgenda = new Agenda({ db: { address: mongoConnectionString } });

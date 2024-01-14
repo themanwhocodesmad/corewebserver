@@ -1,7 +1,7 @@
 const { STORE_TYPE_TO_COST_KEY } = require("../constants/stores-enum")
-const BuildingQueue = require("../models/building-upgrade-queue")
-const Planet = require("../models/planets-model")
-const { Store } = require("../models/stores-model")
+const BuildingQueue = require("../models/game-models/building-models/building-upgrade-queue")
+const Planet = require("../models/game-models/building-models/planets-model")
+const { Store } = require("../models/game-models/general-building-models/stores-model")
 
 
 async function calculateUpgradeStartAndEndTimes(newBuildingDetails) {

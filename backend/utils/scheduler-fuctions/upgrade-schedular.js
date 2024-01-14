@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Agenda = require('agenda');
-const Building = require('../../models/buildings-abstract-model');
+const Building = require('../../models/game-models/building-models/buildings-abstract-model');
 
 
 const mongoConnectionString = process.env.MONGO_URI;

@@ -1,10 +1,10 @@
-const Troop = require("../../models/troop-models/troops-abstract-model");
+const Troop = require("../models/game-models/armoury-models/troops-abstract-model");
 
 
 
 async function checkAndDeductResourcesForTroops(stores, troopType, quantityToAdd) {
     let sufficientResources = true;
-
+''
     // Fetch troop costs
     const troop = await Troop.findById(troopType);
     if (!troop) {
